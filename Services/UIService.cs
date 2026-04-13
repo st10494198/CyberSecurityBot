@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace CyberSecurityBot.Services
 {
@@ -6,15 +7,31 @@ namespace CyberSecurityBot.Services
     {
         public void ShowBanner()
         {
-            Console.ForegroundColor = ConsoleColor.Cyan;
+            try
+            {
+                string path = Path.Combine(
+                    AppDomain.CurrentDomain.BaseDirectory,
+                    "Assets",
+                    "ascii-art.txt"
+                );
 
-            Console.WriteLine("==================================");
-            Console.WriteLine(" CYBERSECURITY AWARENESS BOT");
-            Console.WriteLine("==================================");
-            Console.WriteLine(" Stay safe online 🔐");
-            Console.WriteLine("==================================");
+                if (File.Exists(path))
+                {
+                    string ascii = File.ReadAllText(path);
 
-            Console.ResetColor();
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine(ascii);
+                    Console.ResetColor();
+                }
+                else
+                {
+                    Console.WriteLine("ASCII art file not found!");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error loading ASCII art: " + ex.Message);
+            }
         }
     }
 }

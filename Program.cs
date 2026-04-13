@@ -18,6 +18,12 @@ class Program
         ui.ShowBanner();
 
         // Get user name
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("\n===============================");
+        Console.WriteLine(" Welcome to Cyber Guard 🔐");
+        Console.WriteLine("===============================\n");
+        Console.ResetColor();
+
         Console.Write("Enter your name: ");
         user.Name = Console.ReadLine();
 
@@ -26,7 +32,15 @@ class Program
             user.Name = "User";
         }
 
-        Console.WriteLine($"\nWelcome {user.Name}! Ask me anything about cybersecurity.\n");
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine($"\nWelcome {user.Name}! 👋");
+        Console.WriteLine("You can ask me about:");
+        Console.WriteLine("- Password safety");
+        Console.WriteLine("- Phishing");
+        Console.WriteLine("- Safe browsing");
+        Console.ResetColor();
+
+        Console.WriteLine("\nType 'exit' to quit.\n");
 
         // Chat loop
         while (true)
